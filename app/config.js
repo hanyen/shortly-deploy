@@ -13,24 +13,6 @@ db.once('open', function () {
 module.exports = db;
 
 
-// var Urls = mongoose.model('Urls', urlsSchema);
-
-/*var urlsSchema = new Schema ({
-  id: { type: [Number], index: true},
-  url: String,
-  baseUrl: String,
-  code: String,
-  title: String,
-  visits: Number, 
-  timestamps: {
-    createdAt: {
-      type: Date,
-      required: true,
-      default: Date.now
-    }
-  }
-});
-*/
 
 
 
