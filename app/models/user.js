@@ -20,6 +20,7 @@ usersSchema.pre('save', function (next) {
     });
 });
 
+//refactor this
 User.prototype.comparePassword = function(attemptedPassword, callback) {
   bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
     if ( err ) {
