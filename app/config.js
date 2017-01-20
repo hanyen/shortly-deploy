@@ -1,10 +1,21 @@
 var path = require('path');
 var mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost/shortlydb');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', function () {
+  console.log('Mongo DB connection is open');
+});
 
 
-var urls = new Schema ({
+module.exports = db;
+
+
+// var Urls = mongoose.model('Urls', urlsSchema);
+
+/*var urlsSchema = new Schema ({
   id: { type: [Number], index: true},
   url: String,
   baseUrl: String,
@@ -12,21 +23,18 @@ var urls = new Schema ({
   title: String,
   visits: Number, 
   timestamps: {
-    createdAt: 'created_at'
+    createdAt: {
+      type: Date,
+      required: true,
+      default: Date.now
+    }
   }
 });
+*/
 
-var users = new Schema ({
-  id: { type: [Number], index: true},
-  username: String,
-  password: String,
-  timestamps: {
-    createdAt: 'created_at'
-  }
-});
 
-module.exports = urls;
-module.exports = users;
+
+
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
